@@ -9,4 +9,4 @@ const fn = methodOverride(function (req, res) {
     }
 })
 
-module.exports = methodOverride(fn)
+module.exports = fn
