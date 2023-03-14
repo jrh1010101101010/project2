@@ -1,5 +1,3 @@
-
-/*
 const express = require('express')
 const router = express.Router()
 
@@ -7,5 +5,7 @@ const router = express.Router()
 // ensureloggedin function
 
 router.get('/', (req,res) =>{
-    res.send ('hello')
-}) */
+    res.render ('home')
+})
+
+module.exports = router
