@@ -20,3 +20,13 @@ insert into workout (title, description, set, user_id) values ('chest and should
 insert into workout (title, description, set, user_id) values ('back', 'back day with a focus on high volume', 'Lat pulldowns 4x10+partials, t-bar rows 3x10 + drop set, 4 x midrows, Chest supported cable row 3x10, Rope pullodwn 3x12', '3');
 
 insert into workout (title, description, set) values ('', '', '');
+
+select * from users
+inner join workout
+On workout.user_id = users.id;
+
+
+select * from workout
+inner join users
+on workout.user_id = users.id
+where workout.id = $1;

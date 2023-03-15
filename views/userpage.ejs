@@ -1,11 +1,9 @@
-
-<h1>welcome</h1>
+<h2><%= workout[1].username %>'s workouts</h2>
 
 <% for (ele of workout) { %>
 
     <p><a href="/workout/<%= ele.id %>"><%= ele.title%></a></p>
 
-    <p>by <a href="/userpage/<%= ele.user_id%>"><%= ele.username %></a></p>
     <p><%= ele.description%></p>
 
 <% }%>

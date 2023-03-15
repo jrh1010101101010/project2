@@ -1,8 +1,6 @@
 
 const db = require('../db/index')
 
-
-// dosent know what these are
 function setCurrentUser(req,res){
     const { userID } = req.session
 

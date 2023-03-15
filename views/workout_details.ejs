@@ -3,10 +3,11 @@
 
 <main>
     <h2><%= workout.title %></h2>
-
-    <h2><%= workout.description %></h2>
-
-    <h3><%=  workout.set%></h3>
+    <h3> by <a href="/userpage/<%= workout.user_id %>"><%= workout.username %></a> </h3>
+    
+    <h4>  <%= workout.description %>  </h4>
+    <p><%=  workout.set%></p>
+    
 </main>
 
 
