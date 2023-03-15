@@ -1,7 +1,21 @@
 <h1>workout detials</h1>
 
-<h2><%= workout.title %></h2>
 
-<h2><%= workout.description %></h2>
+<main>
+    <h2><%= workout.title %></h2>
 
-<h3><%=  workout.set%></h3>
+    <h2><%= workout.description %></h2>
+
+    <h3><%=  workout.set%></h3>
+</main>
+
+
+<a href=""></a>
+
+<a href="/workout/<%= workout.id %>/edit">edit</a>
+
+
+<form action="/workout/<%=workout.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>delete</button>
+</form>
