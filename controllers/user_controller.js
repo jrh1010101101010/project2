@@ -6,7 +6,7 @@ const setCurrentUser = require('../middleware/set_current_user')
 
 
 router.get('/login', (req,res) => {
-    res.render('login')
+    res.render('login', {layout: 'layoutNoLogin'})
 })
 
 // set current user function user here
@@ -40,7 +40,7 @@ router.post('/login', (req,res)=>{
 
 router.delete('/sessions', (req,res) =>{
     req.session.destroy(() => {
-        res.redirect('/login')
+        res.redirect('/')
     })
 })
 

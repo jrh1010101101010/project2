@@ -1,4 +1,4 @@
-/*
+
 const {Client} = require ('pg')
 const bcrypt = require ('bcrypt')
 
@@ -22,4 +22,4 @@ bcrypt.genSalt(10, (err,salt) => {
             db.end()
         })
     })
-}) */
+}) 

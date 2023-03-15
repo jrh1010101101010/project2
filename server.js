@@ -6,13 +6,17 @@ const session = require('express-session')
 
 // memorystore
 
-// controllers / middleware
+// middleware
+const currentUser = require('./middleware/set_current_user')
+const methodOverride = require('./middleware/method_override')
+// controllers
 const workoutControllers = require('./controllers/workout_controllers')
 const userControllers = require('./controllers/user_controller')
-const methodOverride = require('./middleware/method_override')
-const currentUser = require('./middleware/set_current_user')
+const newUserController = require('./controllers/new_user_controller')
 
-// other middleware
+
+
+// using
 app.set('view engine', 'ejs')
 const expressLayouts = require('express-ejs-layouts')
 
@@ -25,11 +29,13 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-//app.use(currentUser())
+//console.log(user.id)
+//app.use(currentUser)
 //currentUser()
 
 app.use('/', workoutControllers)
 app.use('/', userControllers)
+app.use('/', newUserController)
 
 
 app.listen(port, () => {

@@ -10,17 +10,17 @@ router.get('/', (req,res) =>{
     const sql = `Select * from workout;`
     db.query(sql, (err, dbRes) =>{
         const workout = dbRes.rows
-        res.render ('home', {workout: workout})
+        res.render ('home', {workout: workout, layout: 'layoutNoLogin'})
     })
     
 })
 
 // share new
-router.get('/workout/new', (req,res) =>{
+router.get('/workout/new', ensureLoggedIn, (req,res) =>{
     res.render('new_workout')
 })
 // workout details
-router.get('/workout/:id',  (req, res) =>{
+router.get('/workout/:id', ensureLoggedIn, (req, res) =>{
     const sql = `select * from workout where id = $1;`
 
     db.query(sql, [req.params.id], (err, dbRes) =>{
@@ -36,17 +36,17 @@ router.get('/workout/:id',  (req, res) =>{
     })
 })
 
-// routing for new dishes
-router.post('/workout', (req,res) =>{
-    const sql = `insert into workout (title, description, set) values ($1, $2, $3);`
-    db.query(sql, [req.body.title, req.body.description, req.body.sets],(err,dbres)=>{
+// routing for new workouts
+router.post('/workout', ensureLoggedIn, (req,res) =>{
+    const sql = `insert into workout (title, description, set, user_id) values ($1, $2, $3, $4);`
+    db.query(sql, [req.body.title, req.body.description, req.body.sets, req.session.userID],(err,dbres)=>{
         res.redirect('/')
     })
 
 })
 
 // editing function 
-router.get('/workout/:id/edit', (req,res) =>{
+router.get('/workout/:id/edit', ensureLoggedIn, (req,res) =>{
     const sql = `select * from workout where id = $1;`
 
 
@@ -63,9 +63,8 @@ router.get('/workout/:id/edit', (req,res) =>{
     })
 })
 // route to update the db and then send back to workout details
-router.put ('/workout/:id', (req,res) =>{
+router.put ('/workout/:id', ensureLoggedIn, (req,res) =>{
     const sql = `UPDATE workout SET title = $1, description = $2, set = $3 WHERE id = $4;`
-    console.log(req.body)
     db.query(sql, 
         [req.body.title, req.body.description, req.body.set, req.params.id], 
         (err, dbRes) =>{
@@ -80,7 +79,7 @@ router.put ('/workout/:id', (req,res) =>{
 })
 
 // delete function
-router.delete('/workout/:id', (req,res) =>{
+router.delete('/workout/:id', ensureLoggedIn, (req,res) =>{
     const sql = `delete from workout where id = $1`
     db.query (sql, [req.params.id], (err,dbRes) =>{
         res.redirect('/')

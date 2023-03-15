@@ -7,9 +7,6 @@ function setCurrentUser(req,res){
     const { userID } = req.session
 
     res.locals.currentUser = {}
-
-
-
         const sql = `SELECT id, username from users WHERE id = '${userID}';`
         db.query(sql, (err, dbRes) =>{
             if (err){
