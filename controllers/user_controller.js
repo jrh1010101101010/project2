@@ -53,7 +53,7 @@ router.get('/userpage/:id', (req,res) =>{
 
         const workout = dbRes.rows
         //const username =
-        console.log(workout[1].username)
+        //console.log(workout[1].username)
         res.render ('userpage', {workout: workout})
     })
 

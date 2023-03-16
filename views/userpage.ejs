@@ -1,7 +1,7 @@
 <h2 class="title"><%= workout[1].username %>'s workouts</h2>
 
 <main class="user-main">
-    <% for (ele of workout) { %>
+    <% for (ele of locals.workout) { %>
         <div class="user-ui">
             <p><a href="/workout/<%= ele.id %>"><%= ele.title%></a></p>
 
