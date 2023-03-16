@@ -1,8 +1,10 @@
 // boilerplate 
 const express = require('express')
 const app = express ()
-const port = 3000
+const port = process.env.PORT || 3000
 const session = require('express-session')
+const upload = require('./middleware/upload')
+const memorystore = require('memorystore')(session)
 
 // memorystore
 
@@ -13,18 +15,22 @@ const methodOverride = require('./middleware/method_override')
 const workoutControllers = require('./controllers/workout_controllers')
 const userControllers = require('./controllers/user_controller')
 const newUserController = require('./controllers/new_user_controller')
-
-
+const searchController = require('./controllers/search_controllers')
+const expressLayouts = require('express-ejs-layouts')
 
 // using
 app.set('view engine', 'ejs')
-const expressLayouts = require('express-ejs-layouts')
 
+app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride)
 app.use(expressLayouts)
 app.use(session({
-    secret: 'mistyrose',
+    cookie: {maxAge: 86400000},
+    store: new memorystore({
+        checkPeriod: 86400000
+    }),
+    secret: process.env.SESSION_SECRET||'mistyrose',
     resave: false,
     saveUninitialized: true,
 }))
@@ -36,6 +42,7 @@ app.use(session({
 app.use('/', workoutControllers)
 app.use('/', userControllers)
 app.use('/', newUserController)
+app.use('/', searchController)
 
 
 app.listen(port, () => {

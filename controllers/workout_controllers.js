@@ -5,14 +5,14 @@ const ensureLoggedIn = require('../middleware/ensure_logged_in')
 
 // ensureloggedin function
 
-router.get('/', (req,res) =>{
+router.get('/', ensureLoggedIn,(req,res) =>{
 
     const sql = `select * from users
     inner join workout
     On workout.user_id = users.id;`
     db.query(sql, (err, dbRes) =>{
         const workout = dbRes.rows
-        res.render ('home', {workout: workout, layout: 'layoutNoLogin'})
+        res.render ('home', {workout: workout})
     })
     
 })
@@ -24,8 +24,8 @@ router.get('/workout/new', ensureLoggedIn, (req,res) =>{
 // workout details
 router.get('/workout/:id', ensureLoggedIn, (req, res) =>{
     //const sql = `select * from workout where id = $1;`
-    const sql = `select * from workout
-    inner join users
+    const sql = `select * from users
+    inner join workout
     on workout.user_id = users.id
     where workout.id = $1;`
     db.query(sql, [req.params.id], (err, dbRes) =>{

@@ -10,6 +10,10 @@ router.get('/signup', (req,res) =>{
 router.post('/signup', (req,res) =>{
     const {username, password, passwordConfirmation} = req.body
 
+    if (password !== passwordConfirmation){
+        res.redirect('signup')
+    }
+
     bcrypt.genSalt(10, (err, salt) =>{
         bcrypt.hash(password, salt, (err,digestedPassword) =>{
             const sql = `insert into users (username, password_digest) values ($1, $2);`
@@ -25,6 +29,22 @@ router.post('/signup', (req,res) =>{
             })
         })
     })
+})
+
+router.get('/userpage/:id', (req,res) =>{
+
+    const sql = `select * from users
+    inner join workout
+    On workout.user_id = users.id;`
+    db.query(sql, (err, dbRes) =>{
+
+        const workout = dbRes.rows
+        //const username =
+        console.log(workout[1].username)
+        res.render ('userpage', {workout: workout})
+    })
+
+    //res.render('userpage')
 })
 
 module.exports = router

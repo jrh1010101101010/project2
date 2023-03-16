@@ -1,22 +1,21 @@
 <h1>workout detials</h1>
 
 
-<main>
+<main class = "workout-details">
     <h2><%= workout.title %></h2>
     <h3> by <a href="/userpage/<%= workout.user_id %>"><%= workout.username %></a> </h3>
     
     <h4>  <%= workout.description %>  </h4>
     <p><%=  workout.set%></p>
+    <p><%= workout.id%></p>
+    <div class = "delete-edit">
+        <a href="/workout/<%= workout.id %>/edit">edit</a>
+        <form action="/workout/<%=workout.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>delete</button>
+        </form>
+    </div>
     
 </main>
 
 
-<a href=""></a>
-
-<a href="/workout/<%= workout.id %>/edit">edit</a>
-
-
-<form action="/workout/<%=workout.id %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>delete</button>
-</form>

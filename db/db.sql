@@ -30,3 +30,7 @@ select * from workout
 inner join users
 on workout.user_id = users.id
 where workout.id = $1;
+
+select * from users where username ilike '%jrh%';
+
+select * from users;

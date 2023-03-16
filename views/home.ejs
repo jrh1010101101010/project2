@@ -1,11 +1,18 @@
+<h1 class="title">Recently Shared Workouts</h1>
 
-<h1>welcome</h1>
+<main class="workout-main">
+    
+   
+    <% for (ele of workout) { %>
+        <div class = "workout-card">
+            <p><a href="/workout/<%= ele.id %>"><%= ele.title%></a></p>
 
-<% for (ele of workout) { %>
+            <p>posted by <a href="/userpage/<%= ele.user_id%>"><%= ele.username %></a></p>
+            <p><%= ele.description%></p>
+        </div>
+    <% }%>
 
-    <p><a href="/workout/<%= ele.id %>"><%= ele.title%></a></p>
+    
+    
+</main>
 
-    <p>by <a href="/userpage/<%= ele.user_id%>"><%= ele.username %></a></p>
-    <p><%= ele.description%></p>
-
-<% }%>
