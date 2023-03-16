@@ -1,0 +1,11 @@
+<h2 class="title"><%= users[0].username %>'s workouts</h2>
+
+<main class="user-main">
+    <% for (ele of users) { %>
+        <div class="user-ui">
+            <p><a href="/workout/<%= ele.id %>"><%= ele.title%></a></p>
+
+            <p><%= ele.description%></p>
+        </div>
+    <% }%>
+</main>

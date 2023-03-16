@@ -4,7 +4,7 @@ const db = require('../db/index')
 const bcrypt = require ('bcrypt')
 
 router.get('/signup', (req,res) =>{
-    res.render('signup')
+    res.render('signup', {layout: 'layoutNoLogin'})
 })
 
 router.post('/signup', (req,res) =>{

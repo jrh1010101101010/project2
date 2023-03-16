@@ -8,6 +8,7 @@
     <h4>  <%= workout.description %>  </h4>
     <p><%=  workout.set%></p>
     <p><%= workout.id%></p>
+    
     <div class = "delete-edit">
         <a href="/workout/<%= workout.id %>/edit">edit</a>
         <form action="/workout/<%=workout.id %>" method="post">

@@ -1,16 +1,11 @@
 <h1 class = "title">usersearch</h1>
 
 <main class = "search-grid">
-    
-
-    
     <% for (ele of users){%>
         <div class = 'search-ui'>
         <a href="/userpage/<%= ele.id %>"><%= ele.username %></a>
         <%= ele.bio %>
         </div>
 
-
     <% }%>
-    
 </main>
