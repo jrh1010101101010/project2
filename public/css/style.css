@@ -114,6 +114,25 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
+.search-grid{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 5px;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.search-ui{
+    background-color: #fffcf8;
+    margin: 10%;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
 .colours{
     background-color: #fffcf8;
     background-color: #dbf0fe;

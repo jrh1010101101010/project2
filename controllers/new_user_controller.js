@@ -10,10 +10,7 @@ router.get('/signup', (req,res) =>{
 router.post('/signup', (req,res) =>{
     const {username, password, passwordConfirmation} = req.body
 
-    if (password !== passwordConfirmation){
-        res.redirect('signup')
-    }
-
+    
     bcrypt.genSalt(10, (err, salt) =>{
         bcrypt.hash(password, salt, (err,digestedPassword) =>{
             const sql = `insert into users (username, password_digest) values ($1, $2);`
@@ -29,6 +26,9 @@ router.post('/signup', (req,res) =>{
             })
         })
     })
+       
+
+    
 })
 
 router.get('/userpage/:id', (req,res) =>{

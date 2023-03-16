@@ -70,6 +70,7 @@ router.get('/workout/:id/edit', ensureLoggedIn, (req,res) =>{
 // route to update the db and then send back to workout details
 router.put ('/workout/:id', ensureLoggedIn, (req,res) =>{
     const sql = `UPDATE workout SET title = $1, description = $2, set = $3 WHERE id = $4;`
+
     db.query(sql, 
         [req.body.title, req.body.description, req.body.set, req.params.id], 
         (err, dbRes) =>{
