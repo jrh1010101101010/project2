@@ -11,20 +11,20 @@
     
     <nav class = "nav-header">
         <h4>THE COLLECTIVE WORKOUTS</h4>
-        <a href="/">home</a>
-        <a href="/workout/new">Share Your Workout!</a>
+        <a href="/" class ="links">home</a>
+        <a href="/workout/new" class="links">Share Your Workout!</a>
         
-        <form action="/sessions" method="post">
+        <form action="/sessions" method="post" class="links">
             <input type="hidden" name="_method" value="delete">
             <button>logout</button>
         </form>
 
-        <form action="/search" method="post">
+        <form action="/search" method="post" class="search-bar">
             Search for a user <input type="text" name="username">
             <button>search</button>
         </form>
 
-        <a href="/userpage">Your page</a>
+        <a href="/userpage" class="links">Your page</a>
     </nav>
 
     <%-body %>

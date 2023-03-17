@@ -60,6 +60,7 @@ body{
 
 .title{
     text-align: center;
+    margin: 0;
 }
 
 .edit-ui{
@@ -132,7 +133,13 @@ body{
     grid-template-columns: 1fr;
 }
 
+.links{
+    margin-top: 15%;
+}
 
+.search-bar{
+    margin-top: 5%;
+}
 .colours{
     background-color: #fffcf8;
     background-color: #dbf0fe;
